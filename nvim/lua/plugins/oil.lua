@@ -1,7 +1,10 @@
 return {
   "stevearc/oil.nvim",
-  opts = {},
-  lazy = false,
+  opts = {
+    skip_confirm_for_simple_edits = true,
+    delete_to_trash = true,
+  },
+  event = "VimEnter",
   keys = {
     {
       mode = { "n" },

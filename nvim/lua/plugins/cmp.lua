@@ -14,6 +14,12 @@ return {
     local cmp = require("cmp")
 
     opts.mapping = vim.tbl_extend("force", opts.mapping, {
+      ["<c-n>"] = {
+        i = cmp.config.disable,
+      },
+      ["<c-p>"] = {
+        i = cmp.config.disable,
+      },
       ["<Tab>"] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.select_next_item()
