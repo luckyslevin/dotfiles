@@ -1,0 +1,1 @@
+sudo codesign --remove-signature Sublime\ Text.app/

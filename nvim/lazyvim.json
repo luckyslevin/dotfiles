@@ -2,6 +2,7 @@
   "extras": [
     "lazyvim.plugins.extras.coding.codeium",
     "lazyvim.plugins.extras.coding.mini-surround",
+    "lazyvim.plugins.extras.editor.harpoon2",
     "lazyvim.plugins.extras.lang.tailwind",
     "lazyvim.plugins.extras.lang.vue",
     "lazyvim.plugins.extras.util.mini-hipatterns"
