@@ -1,0 +1,15 @@
+{
+	"color_scheme": "Solarized (dark).sublime-color-scheme",
+	"theme": "OneDarkMaterial.sublime-theme",
+	"ignored_packages":
+	[
+		"Vintage",
+	],
+	"index_files": true,
+	"tab_size": 2,
+	"font_size": 16,
+	"font_face": "Hack Nerd Font",
+	"translate_tabs_to_spaces": true,
+	"rulers": [79, 99, 120],
+	"draw_white_space": ["all"],
+}
