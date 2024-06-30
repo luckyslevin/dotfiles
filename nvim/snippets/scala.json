@@ -1,0 +1,84 @@
+{
+  "play controller": {
+    "prefix": "cont",
+    "body": [
+      "package controllers",
+      "",
+      "import javax.inject._",
+      "",
+      "import play.api._",
+      "import play.api.mvc._",
+      "",
+      "@Singleton",
+      "class ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/} @Inject()(val controllerComponents: ControllerComponents) extends BaseController {",
+      "  def index() = ${2:TODO}",
+      "}"
+    ],
+    "description": "Play Controller"
+  },
+  "play repo": {
+    "prefix": "repo",
+    "body": [
+      "package models.repo",
+      "",
+      "import javax.inject.{ Inject, Singleton }",
+      "",
+      "import play.api.db.slick._",
+      "",
+      "import slick.jdbc.JdbcProfile",
+      "",
+      "import models.domain._",
+      "",
+      "@Singleton",
+      "class ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/} @Inject() (protected val dbConfigProvider: DatabaseConfigProvider)()",
+      "  extends HasDatabaseConfigProvider[JdbcProfile] {",
+      "  import profile.api._",
+      "  protected class $1(tag: Tag) extends Table[${2}](tag, \"${1/([A-Z][a-z]*)([A-Z][a-z]*)?([A-Z][a-z]*)?([A-Z][a-z]*)?/${1:/upcase}${2:+_}${2:/upcase}${3:+_}${3:/downcase}${4:+_}${4:/upcase}/}\") {",
+      "    def id = column[Int](\"???\", O.PrimaryKey, O.AutoInc)",
+      "    def ??? = column[String](\"???\")",
+      "    def * = (id, ???).mapTo[${2}]",
+      "  }",
+      "",
+      "  object Table extends TableQuery(new $1(_)) {$3}",
+      "}"
+    ]
+  },
+  "play form tuple": {
+    "prefix": "ftup",
+    "body": [
+      "Form(tuple($1",
+      "  )",
+      ")"
+    ]
+  },
+  "play form mapping": {
+    "prefix": "fmapp",
+    "body": [
+      "Form(mapping(",
+      "  $4",
+      "  )",
+      ")($1.$2)($1.$3)"
+    ]
+  },
+  "play service": {
+    "prefix": "service",
+    "body": [
+      "package models.service",
+      "",
+      "import javax.inject.{ Inject, Singleton }",
+      "",
+      "import play.api.db.slick._",
+      "",
+      "import slick.jdbc.JdbcProfile",
+      "",
+      "import models.domain._",
+      "",
+      "@Singleton",
+      "class ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/} @Inject() (protected val dbConfigProvider: DatabaseConfigProvider)()",
+      "  extends HasDatabaseConfigProvider[JdbcProfile] {",
+      "  import profile.api._",
+      "  $2",
+      "}"
+    ]
+  }
+}

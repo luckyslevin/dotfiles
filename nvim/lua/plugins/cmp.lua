@@ -15,7 +15,6 @@ return {
 
     opts.mapping = vim.tbl_extend("force", opts.mapping, {
       ["<C-N>"] = cmp.config.disable,
-
       ["<C-P>"] = cmp.config.disable,
       ["<Tab>"] = cmp.mapping(function(fallback)
         if cmp.visible() then
