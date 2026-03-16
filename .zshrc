@@ -1,13 +1,15 @@
 # ----- Environment variables -----
 export LANG=en_US.UTF-8
-
+export EDITOR=nvim
+export ANDROID_HOME=~/Library/Android/sdk
+export PATH=$ANDROID_HOME/platform-tools:$PATH
 # ----- Settings -----
 # Enable color
 autoload -Uz colors
 colors
 
-# Set key binds like emacs
-bindkey -e
+# Set key binds like vim
+bindkey -v
 
 # Settings for history
 HISTFILE=~/.zsh_history
@@ -139,7 +141,6 @@ function cd() {
     builtin cd $@ && ls;
 }
 
-
 cat << "EOF"
 ⣿⢿⣿⣿⣿⣿⠿⠿⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⣿
 ⡇⠀⠀⠀⠀⠀⠀⣶⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣄⠀⠀⠀⠀⠀T⠀⠀⠀⠀⢸
@@ -161,5 +162,28 @@ cat << "EOF"
 ⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⣰⣿⢸⣿⣿⣿⣿⣮⣝⡿⣿⣿⣿⣿⣿⠿⣫⣾⡇⣿⣿⣷⣄⠀⠀⠀⠀⠀⠀⢸
 ⡇⠀⠀⠀⠀⠀⠀⠀⠀⣼⣿⣿⢸⣿⣿⣿⣿⣿⣿⣿⣶⣭⣭⣽⣶⣿⣿⣿⢱⣿⣿⣿⣿⣧⡀⠀⠀⠀⠀⢸
 ⡇⠀⠀⠀⠀⠀⠀⠀⣸⣿⣿⣿⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⢣⣿⣿⣿⣿⣿⣿⣷⢠⣄⠀⠀⢸
-⣿⣶⣶⣶⣶⣶⣾⣷⣿⣿⣿⣿⣿ ALBERT CUEME ⣿⣿⣿⣾⣿⣿⣿⣿⣷⣿⣿⣶⣾
+⣿⣶⣶⣶⣶⣶⣾⣷⣿⣿⣿⣿⣿⣿⣿⣿⣿ McLOVIN ⣿⣿⣿⣿⣾⣿⣿⣿⣿⣷⣿⣿⣶⣾
 EOF
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+# Set up fzf key bindings and fuzzy completion
+source <(fzf --zsh)
+eval "$(zoxide init zsh)"
+# Alias
+alias f="zi"
+alias r="source ~/.zshrc"
+alias g="lazygit"
+alias n="nvim"
+alias y="yazi"
+
+# pnpm
+export PNPM_HOME="/Users/shortcut/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+
+# Load Angular CLI autocompletion.
+source <(ng completion script)
